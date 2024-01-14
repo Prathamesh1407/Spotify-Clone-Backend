@@ -12,13 +12,13 @@ const cors=require('cors')
 require("dotenv").config();
 const port=8080
 
-app.use(cors(corsOptions))
 app.use(express.json())
 const corsOptions ={
   origin:'*', 
   credentials:true,            //access-control-allow-credentials:true
   optionSuccessStatus:200,
 }
+app.use(cors(corsOptions))
 
 
 //connect mongoose to node app
