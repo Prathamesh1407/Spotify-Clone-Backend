@@ -22,7 +22,7 @@ const corsOptions = (req, corsOptions) => {
   }
 }
 app.use(cors(corsOptions))
-
+app.options('*', cors(corsOptions));
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', 'https://spotify-clone-frontend-roan.vercel.app');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
