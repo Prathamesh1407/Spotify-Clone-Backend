@@ -23,6 +23,18 @@ const corsOptions = (req, corsOptions) => {
 }
 app.use(cors(corsOptions))
 
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', 'https://spotify-clone-frontend-roan.vercel.app');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  res.setHeader('Access-Control-Allow-Credentials', true);
+
+  if (req.method === 'OPTIONS') {
+    return res.sendStatus(200);
+  }
+
+  next();
+});
 
 //connect mongoose to node app
 mongoose.connect("mongodb+srv://Prathamesh1407:"
