@@ -14,8 +14,8 @@ const port=8080
 
 app.use(express.json())
 const corsOptions ={
-  origin:'*', 
-  credentials:true,            //access-control-allow-credentials:true
+  origin:'http://localhost:3000', 
+  credentials:true,            
   optionSuccessStatus:200,
 }
 app.use(cors(corsOptions))
@@ -35,27 +35,6 @@ mongoose.connect("mongodb+srv://Prathamesh1407:"
     }).catch((err)=>{
         console.log("Error while Connecting to Mongo")
     })
-
-//setup passport jwt
-
-// let opts = {}
-// opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
-// opts.secretOrKey = 'secret'; 
-// passport.use(new JwtStrategy(opts, function(jwt_payload, done) {
-//     User.findOne({id: jwt_payload.sub}, function(err, user) {
-//         //done(error,DoesUserExist)
-//         if (err) {
-//             return done(err, false);
-//         }
-//         if (user) {
-//             return done(null, user);
-//         } else {
-//             return done(null, false);
-//             // or you could create a new account
-//         }
-//     });
-// }));
-
 
 const opts = {
     jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
